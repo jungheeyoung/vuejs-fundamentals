@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="shopping-list">
+    <h1>{{ header }}</h1>
+    <input type = "text" v-model="header">
+  </div>
+  <script src = "https://unpkg.com/vue"></script>
+  <script>
+    //vue 인스턴스 생성 담당하는 부분에만 
+    //보이는 것 갱신하는 것 다 바인딩되어 있음
+    var shoppingList = new Vue({
+      el : '#shopping-list', //id로 , 내 뷰가 해당 부분만 담당하겠다
+      data :{ //vue가 이런 데이터를 가지고 있다.
+        header : 'Vue is ready to party!' //key : value
+      }
+    });
+  </script>
+</body>
+</html>
