@@ -12,19 +12,22 @@
   <div id="app" class="container mx-auto py-6">
     <div class="content">
       <h1 class="title">Coffee Plans</h1>
-
       <h2 class="subtitle">
         We travel the world to source the very best single origin coffee for you
       </h2>
-
-      <div class="plans">
-        <plan v-for="plan in plans" :name="plan"></plan>
-      </div>
+      <plan-picker></plan-picker>
     </div>
   </div>
 
+  <script type="text/x-template" id="plan-picker-template">
+    <div class="plans">
+      <!-- 하부 컴포넌트에서 상위 부모한테 객체를 가짐-->
+      <plan v-for="plan in plans" :name="plan" @select = "selectPlan" :selected-plan="selectedPlan"></plan>
+    </div>
+  </script>
+
   <script type="text/x-template" id="plan-template">
-    <div class="plan">
+    <div @click="select" class="plan" :class="{'active-plan' : isSelected }">
       <div class="description">
         <span class="title">
           {{ name }}
