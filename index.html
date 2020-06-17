@@ -22,8 +22,8 @@
     </div>
     <a v-bind:href="newItem" target="_blank">Dynamic Link</a>
     <ul>
-      <li v-for="item in items" :class="{strikeout: item.purchased}" @click="togglePurchased(item)">
-        {{ item.label }}</li> <!-- 이 클래스는 저 모델을 참조해서 수정하겠다, 해당 클래스가 동적으로 바뀐다-->
+      <li v-for="item in reversedItems" :class="{strikeout: item.purchased}" @click="togglePurchased(item)">
+        {{ item.label }}</li>
       <!--{strikeout: item.purchased}-->
     </ul>
     <p v-if="items.length === 0">Nice job!</p>
@@ -57,10 +57,15 @@
           },
         ]
       },
+      computed:{
+        reversedItems(){
+          return this.items.slice(0).reverse();
+        }
+      },
       methods: {
         saveItem: function () {
           this.items.push({
-            lable: this.newItem,
+            label: this.newItem,
             purchased: false,
           });
           this.newItem = "";
