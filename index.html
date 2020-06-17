@@ -4,22 +4,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel = "stylesheet" href="main.css">
+  <link rel="stylesheet" href="main.css">
   <title>Document</title>
 </head>
 
 <body>
   <div id="shopping-list">
-    <h1>{{ header }}</h1>
-    <input type="text" v-model="newItem" placeholder="Add an item" @keyup.enter="saveItem">
-    <button class="btn btn-primary" @click="saveItem">save Item</button>
-    
+    <div class="header">
+      <h1>{{ header }}</h1>
+      <button v-if="state === 'default'" class="btn btn-primary" @click="changeState('edit')">Add Item</button>
+      <button v-else class="btn btn-cancel" @click="changeState('default')">Cancel</button>
+    </div>
+    <div v-if="state === 'edit'" class="add-item">
+      <input type="text" v-model="newItem" placeholder="Add an item" @keyup.enter="saveItem">
+      <button class="btn btn-primary" :disabled="newItem.length === 0" @click="saveItem">save Item</button>
+      <!-- v-bind:disabled-->
+    </div>
+    <a v-bind:href="newItem" target="_blank">Dynamic Link</a>
     <ul>
-      <li v-for="item in items"> {{ item }}</li>
+      <li v-for="item in items" :class="{strikeout: item.purchased}" @click="togglePurchased(item)">
+        {{ item.label }}</li> <!-- 이 클래스는 저 모델을 참조해서 수정하겠다, 해당 클래스가 동적으로 바뀐다-->
+      <!--{strikeout: item.purchased}-->
     </ul>
     <p v-if="items.length === 0">Nice job!</p>
   </div>
-  
+
   <script src="https://unpkg.com/vue"></script>
   <script>
     //vue 인스턴스 생성 담당하는 부분에만 
@@ -27,18 +36,41 @@
     var shoppingList = new Vue({
       el: '#shopping-list', //id로 , 내 뷰가 해당 부분만 담당하겠다
       data: { //vue가 이런 데이터를 가지고 있다.
+        state: 'default',
         header: 'Vue is ready to party!', //key : value
         newItem: '',
         items: [
-          '10 partyt',
-          '23 partyt',
-          '13 partyt'
+          {
+            label: '10 party hats',
+            purchased: false,
+            highPriority: false,
+          },
+          {
+            label: '2 board games',
+            purchased: true,
+            highPriority: false,
+          },
+          {
+            label: '20 cups',
+            purchased: false,
+            highPriority: true,
+          },
         ]
       },
-      methods : {
-        saveItem: function(){
-          this.items.push(this.newItem);
+      methods: {
+        saveItem: function () {
+          this.items.push({
+            lable: this.newItem,
+            purchased: false,
+          });
           this.newItem = "";
+        },
+        changeState: function (newState) {
+          this.state = newState;
+          this.newItem = "";
+        },
+        togglePurchased: function (item) {
+          item.purchased = !item.purchased;
         }
       }
     });
