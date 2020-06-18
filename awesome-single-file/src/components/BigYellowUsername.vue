@@ -2,7 +2,7 @@
   <p class="username">{{ username }}</p>
 </template>
 
-<script>
+<script >
 export default {
   props: {
     username: {
@@ -13,7 +13,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $size: 50pt;
 $yellow: #dcae1d;
 
