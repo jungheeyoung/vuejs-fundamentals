@@ -73,35 +73,7 @@
       ]
     },
     {
-      "isTrusted": true,
-      "id": 4
-    },
-    {
-      "isTrusted": true,
-      "id": 5
-    },
-    {
-      "isTrusted": true,
-      "id": 6
-    },
-    {
-      "isTrusted": true,
-      "id": 7
-    },
-    {
-      "isTrusted": true,
-      "id": 8
-    },
-    {
-      "isTrusted": true,
-      "id": 9
-    },
-    {
-      "isTrusted": true,
-      "id": 10
-    },
-    {
-      "id": 9793599,
+      "id": 2564147,
       "user": {
         "id": "abc123",
         "name": "Adam Jahr"
@@ -111,11 +83,47 @@
         "id": "abc123",
         "name": "Adam Jahr"
       },
-      "title": "t",
-      "description": "t",
-      "location": "t",
-      "date": "2020-06-03T07:07:00.000Z",
+      "title": "Working?",
+      "description": "",
+      "location": "",
+      "date": "",
+      "time": "",
+      "attendees": []
+    },
+    {
+      "id": 9735842,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "nature",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "Test1",
+      "description": "Test Data 1",
+      "location": "lala",
+      "date": "2020-06-09T09:07:00.000Z",
       "time": "15:00",
+      "attendees": []
+    },
+    {
+      "id": 1424857,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "education",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "Test2",
+      "description": "Test Des 2",
+      "location": "Test",
+      "date": "2020-06-02T09:07:00.000Z",
+      "time": "16:00",
       "attendees": []
     }
   ]
